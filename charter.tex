@@ -1,34 +1,34 @@
 \documentclass[
 11pt, % The default document font size, options: 10pt, 11pt, 12pt
-codirector, % Uncomment to add a codirector to the title page
+%codirector, % Uncomment to add a codirector to the title page
 ]{charter} 
 
-
+\usepackage{subfig}
 
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Título del proyecto} 
+\titulo{Autoencoders para reforzar modelos de prevención de fraude} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
-\posgrado{Carrera de Especialización en Sistemas Embebidos} 
+%\posgrado{Carrera de Especialización en Sistemas Embebidos} 
 %\posgrado{Carrera de Especialización en Internet de las Cosas} 
-%\posgrado{Carrera de Especialización en Intelegencia Artificial}
+\posgrado{Carrera de Especialización en Inteligencia Artificial}
 %\posgrado{Maestría en Sistemas Embebidos} 
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Nombre del Autor} 
+\autor{Ariel Salassa} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Nombre del Director}
-\pertenenciaDirector{pertenencia} 
+\director{M. Sc. Lcdo. Franco Arito}
+\pertenenciaDirector{Mercado Libre} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{John Doe} % para que aparezca en la portada se debe descomentar la opción codirector en el documentclass
 \pertenenciaCoDirector{FIUBA}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Nombre del cliente}
-\empresaCliente{Empresa del cliente}
+\cliente{M. Sc. Lcdo. Franco Arito}
+\empresaCliente{Mercado Libre}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
 \juradoUno{Nombre y Apellido (1)}
@@ -38,9 +38,9 @@ codirector, % Uncomment to add a codirector to the title page
 \juradoTres{Nombre y Apellido (3)}
 \pertenenciaJurTres{pertenencia (3)}
  
-\fechaINICIO{30 de abril de 2021}		%Fecha de inicio de la cursada de GdP \fechaInicioName
-\fechaFINALPlan{18 de junio de 2021} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{15 de mayo de 2022}	%Fecha de defensa pública del trabajo final
+\fechaINICIO{24 de junio de 2021}		%Fecha de inicio de la cursada de GdP \fechaInicioName
+\fechaFINALPlan{19 de agosto de 2021} 	%Fecha de final de cursada de GdP
+\fechaFINALTrabajo{15 de junio de 2022}	%Fecha de defensa pública del trabajo final
 
 
 \begin{document}
@@ -68,9 +68,12 @@ codirector, % Uncomment to add a codirector to the title page
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
-0      & Creación del documento                                 &\fechaInicioName \\ \hline
-%1      & Se completa hasta el punto 4 inclusive                 & dd/mm/aaaa \\ \hline
-%2      & Se completa hasta el punto 7 inclusive
+0.0      & Creación del documento                                 			& 24/06/2021 \\ \hline
+1.0      & Se completa hasta la sección 5 inclusive               	& 07/07/2021 \\ \hline
+1.1      & Correcciones de la versión 1.0                 					& 08/07/2021 \\ \hline
+2.0      & Se completa hasta la sección 9 inclusive					& 14/07/2021 \\ \hline
+2.1      & Correcciones de la versión 1.0 									& 22/07/2021 \\ \hline
+3.0      & Se completa hasta la sección 12 inclusive					& 29/07/2021 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & dd/mm/aaaa \\ \hline
@@ -92,7 +95,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en \textcolor{red}{la implementación de un prototipo de un sistema de control de temperatura de un calefón}, y tendrá un presupuesto preliminar estimado de \textcolor{red}{600} hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y  consistirá esencialmente en un sistema que aporte información complementaria para el entrenamiento de futuros modelos de prevención de fraude de pagos electrónicos. El Trabajo Final tendrá un presupuesto preliminar estimado de 600 hs de trabajo y recursos económicos brindados por la empresa Mercado Libre, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -115,332 +118,332 @@ Se adjunta a esta acta la planificación inicial.
 \section{1. Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
+Mercado Pago es la plataforma fintech dentro del ecosistema de Mercado Libre (Meli). En esta plataforma, que tiene millones de usuarios activos, se ofrecen distintas soluciones tecnológicas que hace posible pagar y cobrar en forma online. Algunos ejemplos de dichas soluciones son: abono de servicios, recargas de teléfono o pases de transporte, pagos y cobros con códigos QR, envíos de dinero, entre otros.
 
-\begin{consigna}{red} % El bloque "consigna" se usa para poner texto en rojo y dar una pequeña ayuda sobre cómo completar la sección
+Dada la gran cantidad de usuarios y transacciones, y la variedad de estas, ha sido necesario desarrollar modelos de machine learning que sean capaces de detectar transacciones fraudulentas que perjudican reputacional y económicamente  a la empresa, como se puede visualizar en la Figura \ref{fig:fraudster}.
 
-El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
-
-Se debe destacar claramente cuál es el valor que agrega el proyecto a realizar. ``El presente proyecto se destaca especialmente por incorporar tal cosa... Esto lo diferencia de otros sistemas similares en que ...''
-
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
-
-\begin{itemize}
-	\item ¿Cómo se vincula este proyecto con la misión de la organización?
-	\item ¿Cómo se inserta este proyecto en el modelo de negocio de la organización?
-	\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-	\item ¿En qué estado del ciclo de vida está el producto que se desea reemplazar o mejorar?
-	\item ¿Cuáles son las necesidades que debe satisfacer?
-	\item ¿Por dónde pasa la innovación?
-\end{itemize}
-
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema} y una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''. Luego recién más abajo de haber puesto esta frase, se pone la figura. La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
-
-%\vspace{25px}
-
-\begin{figure}[htpb]
-\centering 
-\includegraphics[width=.5\textwidth]{./Figuras/diagBloques.png}
-\caption{Diagrama en bloques del sistema}
-\label{fig:diagBloques}
+\begin{figure}[H]
+\centering
+\frame{\includegraphics[width=.9\textwidth]{./Figuras/fraudster.png}}
+\caption{Esquema del comportamiento esperado de los usuarios dentro de las plataformas de Meli.}
+\label{fig:fraudster}
 \end{figure}
 
-\vspace{25px}
+El entrenamiento de modelos de machine learning para este tipo de aplicaciones conlleva una dificultad adicional: los datos de entrenamiento están fuertemente desbalanceados, es decir, la cantidad de pagos no fraudulentos es mucho mayor que la cantidad de pagos fraudulentos.
 
-El tamaño de la tipografía en TODAS las figuras debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama, preferentemente en la gama de colores pastel.
-\end{consigna}
+Para hacerle frente a este problema, lo que se propone hacer es entrenar un autoencoder, cuya arquitectura esquemática se muestra en la Figura \ref{fig:autoencoder}, sólo con pagos fraudulentos. De esta manera será posible enriquecer los registros de pagos que en el pasado fueron rechazados por ser riesgosos para poder tomarlos en cuenta en futuros entrenamientos. 
 
+Por otro lado, el autoencoder presenta en su capa central o capa latente una representación reducida y codificada de la entrada. Es de esperarse que a partir de ella puedan visualizarse patrones de fraudes conocidos y, eventualmente, sacar conclusiones o indicios de patrones de fraudes sin conocer. El potencial de dicha representación puede verse en la Figura \ref{fig:latentRepresentation}.
+
+\begin{figure}[H]
+\centering
+\frame{\includegraphics[width=.6\textwidth]{./Figuras/autoencoder.png}}
+\caption{Arquitectura representativa de un autoencoder.}
+\label{fig:autoencoder}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subfloat[Descomposición de datos de entrada.]{\frame{\includegraphics[width=0.47\textwidth]{./Figuras/actualRepr.png}}}
+\hspace{0.05\textwidth}
+\subfloat[Descomposición de datos latentes.]{\frame{\includegraphics[width=0.47\textwidth]{./Figuras/latentRepr.png}}}
+%\frame{\includegraphics[width=\textwidth]{./Figuras/latentRepresentation.png}}
+\caption{Imagen ilustrativa del artículo \emph{‘Semi Supervised Classification using AutoEnconders’} de Kaggle usando el método de descomposición T-SNE (\emph{t-Distributed Stochastic Neighbor Embedding}) aplicado a los datos.}
+\label{fig:latentRepresentation}
+\end{figure}
+
+En la Figura \ref{fig:esquemaSistema} se observa un diagrama de bloques que ilustra cómo sería el funcionamiento del sistema en producción. En primer lugar, un usuario realizaría un pago en línea. Inmediatamente, el pago entra al sistema y se obtiene una representación vectorizada del mismo con los atributos de interés. Esta codificación del pago pasa por la red neuronal del motor de fraude y se obtiene una probabilidad de que el pago sea fraudulento (predicción). En función de la probabilidad de fraude y otros factores se decide si el pago se rechaza o se aprueba y se guardan todos los valores en una base de datos. En caso de que el pago sea rechazado, el mismo se envía al autoencoder de Fraude. Del autoencoder se obtendrá una puntuación de fraude asociada al pago rechazado que también se guardará en la base de datos. 
+
+La puntuación de fraude será una medida de la capacidad de reconstrucción del autoencoder y  representará qué tan similar a un fraude real es el pago rechazado. Al momento de entrenar nuevos modelos de red o reentrenar modelos existentes, los pagos con alta puntuación podrán ser considerados en el dataset de entrenamiento. 
+
+\begin{figure}[htpb]
+\centering
+\frame{\includegraphics[width=\textwidth]{./Figuras/esquemaSistema.png}}
+\caption{Diagrama de bloques del funcionamiento del sistema.}
+\label{fig:esquemaSistema}
+\end{figure}
 
 \section{2. Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-\begin{consigna}{red} 
-Nota: (borrar esto y todas las consignas en color rojo antes de entregar este documento).
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos.
- 
-Si se considera que una persona cumple dos o más roles, entonces sólo dejarla en el rol más importante. Por ejemplo:
-
-\begin{itemize}
-\item Si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente.
-\item Si una persona es el Responsable, no debe ser colocado también como Miembro del equipo.
-\end{itemize}
-
-Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por ejemplo.
-
 \begin{table}[ht]
-%\caption{Identificación de los interesados}
-%\label{tab:interesados}
-\begin{tabularx}{\linewidth}{@{}|l|X|X|l|@{}}
+\begin{tabularx}{\linewidth}{@{}|l|X|l|X|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
-Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
-Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
+Responsable   & \authorname       & Mercado Libre   & ML Engineer \newline Alumno 	\\ \hline
+Colaboradores & Ing. Paz Martin \newline 
+    							Lcdo. Joaquín Loyola \newline 
+    							Ing. Enrique Serdio    
+    						& Mercado Libre  
+    						& Sr. Data Scientist \newline 
+    							Sr. Data Engineer \newline 
+    							Sr. ML Engineer		\\ \hline
+Orientador    & \supname	      & \pertesupname 	& Sr. ML Expert \newline Director Trabajo final \\ \hline
+Usuario final & Desarrolladores de Machine Learning & Mercado Libre   & Data Scientists \newline ML Engineers       	\\ \hline
 \end{tabularx}
+\caption{Identificación de los interesados}
+\label{tab:interesados}
 \end{table}
 
-El Director suele ser uno de los Orientadores.
-
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Es deseable listar a continuación las principales características de cada interesado.
- 
-Por ejemplo:
 \begin{itemize}
-	\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-	\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
-	\item Orientador: María Gómez va a poder ayudar mucho con la definición de los requerimientos.
+	\item Responsable: \authorname, es la persona que desarrollará el proyecto.
+	\item Colaboradores:
+	\begin{itemize}
+        \item{Paz Martín}: es líder y referente técnica del equipo de científicos de datos donde se desempeña el responsable. Validará la gestión del tiempo y será capaz de orientar en el desarrollo si el responsable lo requiriese. 
+        \item{Joaquín Loyola}: es líder y referente técnico del equipo de ingeniería de datos. Su colaboración pasará por asistir al referente en cuestiones ligadas a los datos de entrenamiento, si fuese necesario.
+        \item{Enrique Serdio}: es referente técnico del equipo de ML Ops. Su colaboración se centrará, si fuese necesario, en asistir al responsable en cuestiones ligadas a la infraestructura de los modelos de machine learning en la nube.
+      \end{itemize}
+	\item Orientador: Franco Arito es el director del presente proyecto y líder técnico de múltiples equipos de Mercado Libre. Su función será orientar al responsable a lo largo de la realización del proyecto.
+	\item Desarrolladores de Machine Learning: son los usuarios finales que podrán hacer uso del sistema para enriquecer sus modelos.
 \end{itemize}
-
-\end{consigna}
-
-
 
 \section{3. Propósito del proyecto}
 \label{sec:proposito}
-
-\begin{consigna}{red}
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
-
-Se recomienda que sea solo un párrafo que empiece diciendo ``El propósito de este proyecto es...''.
-\end{consigna}
+El propósito de este proyecto es poner en valor los pagos que son rechazados por el motor de fraude y que tienen potencial de ser utilizados en futuros entrenamientos de redes neuronales de manera tal de reducir el desbalance de los datasets de entrenamiento y validación. Además, se espera que la representación en la capa latente permita evaluar oportunidades para determinar perfiles de fraude. Con una representación como esta, los equipos de prevención tendrán a su disposición una herramienta que les permitirá ser más reactivos ante posibles ataques. 
 
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
+El proyecto comprenderá las siguientes etapas:
+\begin{itemize}
+\item Planificación de tareas.
+\item Formación en TensorFlow.
+\item Investigación de autoencoders aplicados a la prevención de fraude.
+\item Selección y extracción del dataset para realizar prueba de concepto del modelo.
+\item Análisis de datos del dataset.
+\item Pruebas de arquitectura de red.
+\item Visualización y análisis de datos de la capa latente utilizando el método de descomposición T-SNE.
+\item Evaluación de distintas formas de hacer etiquetado (labeling).
+\item Evaluación de la performance del sistema comparado con otras soluciones.
+\item Evaluación del modelo con otros datasets.
+\end{itemize}
 
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
 
-Se refiere al trabajo a hacer para entregar el producto o resultado especificado. 
-
-Explicitar todo lo quede comprendido dentro del alcance del proyecto.
-
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
-
-\end{consigna}
+El presente proyecto no incluye:
+\begin{itemize}
+\item Aplicación de algoritmos de clustering para los datos codificados a partir de la capa latente.
+\item Despliegue del modelo y puesta en producción.
+\end{itemize}
 
 
 \section{5. Supuestos del proyecto}
 \label{sec:supuestos}
-
-\begin{consigna}{red}
-``Para el desarrollo del presente proyecto se supone que: ...''
-
+Para el desarrollo del presente proyecto se supone que:
 \begin{itemize}
-	\item Supuesto 1
-	\item Supuesto 2...
+	\item El responsable dispondrá de suficiente cantidad de tiempo para encarar los problemas que se presenten en el desarrollo del proyecto.
+	\item El responsable tendrá a su disposición a su director y/o colaboradores cuando sea pertinente.
+	\item TensorFlow es el framework de cálculo numérico que dispone de todas las herramientas necesarias para encarar este proyecto.
+	\item El autoencoder entrenado solamente con pagos fraudulentos tendrá buen ratio de reconstrucción de datos a la hora de evaluar pagos rechazados por alto riesgo.
+	\item La puntuación de Fraude (asociada con la medida de reconstrucción de un pago) será un dato de tipo flotante, o bien, un dato de tipo categórico basado en ciertos valores de corte (thresholds). 
+	\item Es posible aplicar el método de descomposición T-SNE a los datos codificados y, a partir de su representación en dos o tres dimensiones, se podrán realizar nuevos análisis, por ejemplo, la identificación de clusters de fraudes.
+	\item Una vez que el autoencoder esté entrenado y validado con un set de pagos, su aplicación podrá generalizarse.
+	\item El comportamiento de los usuarios que provocan el fraude no mutará mientras tiene lugar el desarrollo de este proyecto.
 \end{itemize}
-
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
-\end{consigna}
 
 \section{6. Requerimientos}
 \label{sec:requerimientos}
 
-\begin{consigna}{red}
-Los requerimientos deben numerarse y de ser posible estar agruparlos por afinidad, por ejemplo:
-
 \begin{enumerate}
-	\item Requerimientos funcionales
-		\begin{enumerate}
-			\item El sistema debe...
-			\item Tal componente debe...
-			\item El usuario debe poder...
-		\end{enumerate}
 	\item Requerimientos de documentación
 		\begin{enumerate}
-			\item Requerimiento 1
-			\item Requerimiento 2 (prioridad menor)
+			\item Toda documentación compartida debe mantenerse dentro de un acuerdo de confidencialidad.
+			\item El trabajo debe ser continuamente documentado y se presentarán informes de avance una vez cada tres semanas al director.
+			\item Los informes de avance pueden ser presentados como código correctamente documentado con los resultados correspondientes.
 		\end{enumerate}
-	\item Requerimiento de testing...
-	\item Requerimientos de la interfaz...
-	\item Requerimientos interoperabilidad...
-	\item etc...
+	\item Requerimientos de forma trabajo
+		\begin{enumerate}
+			\item Se utilizará una metodología de trabajo ágil e iterativa con mucha interacción entre el responsable, el director y los colaboradores.
+		\end{enumerate}
+	\item Requerimientos de lenguajes y frameworks
+		\begin{enumerate}
+			\item Los datos deberán ser consultados a base de datos relacionales. El lenguaje para estas transacciones debe ser SQL y debe ser lo más agnóstico posible intentando de no usar funciones que sean específicas de uno y otro proveedor.
+			\item El framework utilizado debe ser Tensor Flow en su versión V2.0 o superior en Python.
+			\item Todo análisis debe realizarse en código Python dentro de Jupyter labs y utilizando librerías standard  (numpy, pandas, matplotlib, seaborn, etcétera).
+		\end{enumerate}
+	\item Requerimientos de infraestructura
+		\begin{enumerate}
+			\item Las queries de extracción de datos deben ser compatibles con Amazon Redshift y/o Google BigQuery.
+			\item Los datasets deben ser guardados en Amazon S3 o Google Cloud Storage como archivos con extensión \emph{.csv}.
+			\item En caso de ser necesario un hardware específico de entrenamiento, deberán usarse los servicios de Google Cloud Platform (GCP).
+		\end{enumerate}
+	\item Requerimientos funcionales
+		\begin{enumerate}
+			\item La extracción de datos no puede demorar más de 24 hs.
+			\item El modelo entrenado debe tener una precisión de al menos 85\%.
+			\item El modelo debe ser entrenado con al menos diez mil registros.
+			\item El entrenamiento del modelo no puede demorar más de 24 hs.
+			\item El tipo de dato que represente la puntuación de fraude debe ser categórico o flotante.
+			\item Las representaciones resultantes de la descomposición deben poder visualizarse en dos o tres dimensiones.
+		\end{enumerate}
+	\item Requerimientos de testing y evaluación
+		\begin{enumerate}
+			\item La efectividad de la puntuación de fraude debe ser evaluada contra una marca dada por una heurística conocida.
+			\item Dicha puntuación debe ser igual o mejor que dicha marca.
+		\end{enumerate}
 \end{enumerate}
-
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos y si hay requerimientos opcionales. 
-
-No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-	\item Ser breve y conciso (nadie lee cosas largas). 
-	\item Ser específico: no dejar lugar a confusiones.
-	\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
-
-\end{consigna}
 
 \section{7. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
+La medida del trabajo a efectuar para cumplir con cada una de las historias de usuarios estará dada por \emph{story points}. Para ponderar los esfuerzos se utilizará la serie de Fibonacci con valores: 0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, etc. Cuando el esfuerzo se considere alto los \emph{story points} tomarán valores entre 0 y 3 inclusive. Cuando se considere medio, entre 5 y 13 inclusive. Cuando el esfuerzo se considere alto el valor de los \emph{story points} será igual o mayor a 21.
 
-\begin{consigna}{red}
-Descripción: En esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
+\begin{itemize}
+\item Como analista y desarrollador quiero una métrica de fraude para reutilizar pagos rechazados por alto riesgo en futuros entrenamientos y futuros análisis. 
 
-El formato propuesto es: "como [rol] quiero [tal cosa] para [tal otra cosa]."
+Dificultad: Alta (34) -- Complejidad: Alta (34)  -- Incertidumbre: Alta (34)
 
-Se debe indicar explícitamente el criterio para calcular los \textit{story points} de cada historia
-\end{consigna}
+Story Points: 34 + 34 + 34 = 102 $\rightarrow$ 89
+
+\item Como cliente quiero tener un modelo de red realizado con tecnologías standards y \emph{open source} para poder mantenerlo a futuro con el menor esfuerzo posible.
+
+Dificultad: Media (8) -- Complejidad: Media (8) -- Incertidumbre: Baja (1)
+
+Story Points: 8 + 8 + 1 = 17 $\rightarrow$ 21
+
+\item Como analista de datos quiero tener una representación simplificada del fraude para entender posibles ataques y ser reactivo en consecuencia.
+
+Dificultad: Alta (21)  -- Complejidad: Alta (21) -- Incertidumbre: Alta (21)
+
+Story Points: 21 + 21 + 21 = 63 $\rightarrow$  55
+
+\item Como cliente quiero tener las bases de un modelo de red preciso para servirlo en producción adaptándose a flujos preexistentes.
+
+Dificultad: Media (8) -- Complejidad: Media (8) -- Incertidumbre: Alta (21)
+
+Story Points: 8 + 8 + 21 = 37 $\rightarrow$ 34
+
+\item Como cliente quiero recibir la documentación del trabajo realizado para que pueda servir como base de futuros desarrollos de la empresa.
+
+Dificultad: Media (13) -- Complejidad: Baja (2) -- Incertidumbre: Baja (1)
+
+Story Points: 13 + 2 + 1 = 16 $\rightarrow$ 13
+
+\item Como cliente quiero tener una presentación resumida del trabajo para mostrar sus resultados y su potencial potencial a todos los interesados.
+
+Dificultad: Baja (3) -- Complejidad: Baja (2) -- Incertidumbre: Baja (2)
+
+Story Points: 3 + 2 + 2 = 7 $\rightarrow$ 8
+
+
+\end{itemize}
 
 \section{8. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
-
-Los entregables del proyecto son (ejemplo):
+Los entregables del proyecto que conservará la empresa donde trabaja el responsable y el director son:
 
 \begin{itemize}
-	\item Manual de uso
-	\item Diagrama de circuitos esquemáticos
-	\item Código fuente del firmware
-	\item Diagrama de instalación
-	\item Informe final
-	\item etc...
+ \item Informe final.
+ \item Presentación final.
+ \item Datasets utilizados.
+ \item Queries de extracción documentadas.
+ \item Jupyter labs de análisis documentados.
 \end{itemize}
 
-\end{consigna}
+Además, se entregará a los docentes responsables de la Carrera de Especialización en Inteligencia Artificial de la UBA el informe final del proyecto con firma previa de los documentos de confidencialidad.
 
 \section{9. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-El WBS debe tener relación directa o indirecta con los requerimientos.  Son todas las actividades que se harán en el proyecto para dar cumplimiento a los requerimientos. Se recomienda mostrar el WBS mediante una lista indexada:
 
 \begin{enumerate}
-\item Grupo de tareas 1
+\item Planificación (60 hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+		\item Estudio de necesidades (9 hs)
+		\item Análisis de factibilidad (3 hs)
+		\item Definición de requerimientos (9 hs)
+		\item Confección de documento de planificación (39 hs)
 	\end{enumerate}
-\item Grupo de tareas 2
+\item Investigación y capacitación (114 hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+		\item Estudio de distintos tipos de autoencoders (9 hs)
+		\item Estudio de autoencoders aplicados a la prevención de fraude (3 hs)
+		\item Capacitación en Tensor Flow 2 (15 hs)
+		\item Capacitación en \emph{feature preprocessing} y \emph{feature engineering} (24 hs)
+		\item Capacitación en \emph{feature selection} (15 hs)
+		\item Capacitación en SQL aplicado a Amazon Redshift y Google BigQuery (9 hs)
+		\item Capacitación en \emph{Machine Learning pipelines} en GCP (15 hs)
+		\item Estudio de algoritmo T-SNE (9 hs)
+		\item Elaboración de códigos de ejemplos básicos (15 hs)
 	\end{enumerate}
-\item Grupo de tareas 3
+\item Confección dataset de prueba (45 hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
-	\item Tarea 4 (tantas hs)
-	\item Tarea 5 (tantas hs)
+		\item Exploración y elección tablas (9 hs)
+		\item Análisis de completitud de datos (9 hs)
+		\item Confección de query de extracción (9 hs)
+		\item Extracción de datos (3 hs)
+		\item Selección de features (15 hs)
 	\end{enumerate}
+\item Entrenamiento (78 hs)
+	\begin{enumerate}
+		\item Aplicación de \emph{feature preprocessing} (15 hs)
+		\item Prueba de distintas arquitecturas de red con distintas configuraciones (39 hs)
+		\item Evaluación y ajuste del modelo (24 hs)
+	\end{enumerate}
+\item Pruebas de validación (63 hs)
+	\begin{enumerate}
+		\item Evaluación de distintas estrategias de \emph{labeling} (39 hs)
+		\item Comparación de resultados en función de heurísitcas conocidas (24 hs)
+	\end{enumerate}
+\item Representación reducida (63 hs)
+	\begin{enumerate}
+ 		\item Visualización de datos de la capa de entrada utilizando el método de descomposición T-SNE (15 hs)
+ 		\item Visualización de datos de la capa latente utilizando el método de descomposición T-SNE (15 hs)
+ 		\item Visualización segmentada de los datos en función de features de interés del modelo (33 hs)
+ 	\end{enumerate}
+\item Generalización (87 hs)
+ 	\begin{enumerate}
+ 		\item Extracción de datos correspondientes a otro flujo de datos (24 hs)
+ 		\item Análisis de completitud de datos (15 hs)
+ 		\item Comparación y análisis de resultados (24 hs)
+ 		\item Ajustes finales (24 hs)
+ 	\end{enumerate}
+\item Documentación y presentación final (90 hs)
+ 	\begin{enumerate}
+ 		\item Elaborar informe final del proyecto (50 hs)
+ 		\item Preparación de presentación final (30 hs)
+ 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (tantas hs)
-
-Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
-
-\end{consigna}
+Cantidad total de horas: (600 hs)
 
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
 
-\begin{consigna}{red}
-Armar el AoN a partir del WBS definido en la etapa anterior. 
-
-%La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
-
-%\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
-
-\end{consigna}
+En la Figura \ref{fig:aon} se muestra el diagrama de \emph{Activity on Node} del proyecto. Las flechas resaltadas en negro ilustran el camino crítico del proyecto. También se puede ver que los hitos marcan el fin de las distintas fases del proyecto, las cuales, a su vez, están representadas en distintos colores.
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
-\caption{Diagrama en \textit{Activity on Node}}
-\label{fig:AoN}
+\includegraphics[width=\textwidth]{./Figuras/aon.png}
+\caption{Diagrama en \textit{Activity on Node.}}
+\label{fig:aon}
 \end{figure}
-
-Indicar claramente en qué unidades están expresados los tiempos.
-De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
-Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
-
-
 
 \section{11. Diagrama de Gantt}
 \label{sec:gantt}
 
-\begin{consigna}{red}
+A continuación se muestra el diagrama de Gant del presente proyecto. Se consideró la jornada laboral de 3 horas de trabajo desde la fecha de inicio del curso hasta finales de abril del próximo año.
+En la figura \ref{fig:ganttReducido} y \ref{fig:ganttCompleto} se muestra el diagrama de Gantt de forma compacta y de forma desglosada respectivamente, tal como se enumeró en la sección 9.
 
-Existen muchos programas y recursos \textit{online} para hacer diagramas de gantt, entre los cuales destacamos:
-
-\begin{itemize}
-\item Planner
-\item GanttProject
-\item Trello + \textit{plugins}. En el siguiente link hay un tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-gantt-de-un-proyecto}
-\item Creately, herramienta online colaborativa. \\\url{https://creately.com/diagram/example/ieb3p3ml/LaTeX}
-\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ \url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf}
-\end{itemize}
-
-Pegar acá una captura de pantalla del diagrama de Gantt, cuidando que la letra sea suficientemente grande como para ser legible. 
-Si el diagrama queda demasiado ancho, se puede pegar primero la ``tabla'' del Gantt y luego pegar la parte del diagrama de barras del diagrama de Gantt.
-
-Configurar el software para que en la parte de la tabla muestre los códigos del EDT (WBS).\\
-Configurar el software para que al lado de cada barra muestre el nombre de cada tarea.\\
-Revisar que la fecha de finalización coincida con lo indicado en el Acta Constitutiva.
-
-En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realizado con el paquete de \textit{pgfgantt}. En la plantilla pueden ver el código que lo genera y usarlo de base para construir el propio.
-
-\begin{figure}[htbp]
-\begin{center}
-\begin{ganttchart}{1}{12}
-  \gantttitle{2020}{12} \\
-  \gantttitlelist{1,...,12}{1} \\
-  \ganttgroup{Group 1}{1}{7} \\
-  \ganttbar{Task 1}{1}{2} \\
-  \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
-  \ganttmilestone{Milestone o hito}{7} \ganttnewline
-  \ganttbar{Final Task}{8}{12}
-  \ganttlink{elem2}{elem3}
-  \ganttlink{elem3}{elem4}
-\end{ganttchart}
-\end{center}
-\caption{Diagrama de gantt de ejemplo}
-\label{fig:gantt}
-\end{figure}
-
-
-\begin{landscape}
 \begin{figure}[htpb]
 \centering 
-\includegraphics[height=.85\textheight]{./Figuras/Gantt-2.png}
-\caption{Ejemplo de diagrama de Gantt rotado}
-\label{fig:diagGantt}
+\includegraphics[width=\textwidth]{./Figuras/ganttReducido.pdf}
+\caption{Diagrama de Gantt reducido.}
+\label{fig:ganttReducido}
 \end{figure}
 
-\end{landscape}
-
-\end{consigna}
-
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=\textwidth,  height=0.9\textheight]{./Figuras/ganttCompleto.pdf}
+\caption{Diagrama de Gantt desglosado en tareas.}
+\label{fig:ganttCompleto}
+\end{figure}
 
 \section{12. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
 
-\begin{consigna}{red}
-Si el proyecto es complejo entonces separarlo en partes:
-\begin{itemize}
-	\item Un total global, indicando el subtotal acumulado por cada una de las áreas.
-	\item El desglose detallado del subtotal de cada una de las áreas.
-\end{itemize}
+En esta sección se detallas los gastos del proyecto. Las unidades del valor unitario están dadas en dólares estadounidenses.
 
-IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
-
-\end{consigna}
+Las cantidades del uso de los servicios son estimadas. En el caso de Amazon Redshift y Google BigQuery se ha considerado el gasto mensual fijo del uso del servicio que paga la empresa. En el caso de Amazon Redshift se ha estimado que se almacenará 1 Terabyte de información durante 10 meses. Finalmente, para el caso de entrenamientos, se ha considerado que los entrenamientos de los experimentos durarán 50 horas y tendrán lugar durante un mes.
 
 \begin{table}[htpb]
 \centering
@@ -452,49 +455,45 @@ IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
 Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
+  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total [USD]} \\ \hline
+ 	Mano de obra & 
+  	\multicolumn{1}{c|}{600 horas} &
+  	\multicolumn{1}{c|}{10 USD/hora} &
+  	\multicolumn{1}{c|}{6000} \\ \hline
+ 	Google BigQuery &
+  	\multicolumn{1}{c|}{1 mes} &
+  	\multicolumn{1}{c|}{1700 USD/mes} &
+  	\multicolumn{1}{c|}{1700} \\ \hline
+ 	Amazon Redshift &
+  	\multicolumn{1}{c|}{1 mes} &
+  	\multicolumn{1}{c|}{1380 USD/mes} &
+  	\multicolumn{1}{c|}{1380} \\ \hline
+ 	Amazon S3 &
+  	\multicolumn{1}{c|}{1 TB 10 meses} &
+  	\multicolumn{1}{c|}{0.0.23 USD/GB/mes} &
+  	\multicolumn{1}{c|}{235.52} \\ \hline
+ 	Google AI Platform &
+  	\multicolumn{1}{c|}{1 mes} &
+  	\multicolumn{1}{c|}{61.05 USD/mes} &
+  	\multicolumn{1}{c|}{61.05} \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{9376.57} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
+  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total [USD]} \\ \hline
+	30\% del costo directo & 
+  	\multicolumn{1}{c|}{-} &
+  	\multicolumn{1}{c|}{-} &
+  	\multicolumn{1}{c|}{2812.97} \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{2812.97} \\ \hline
 \rowcolor[HTML]{C0C0C0}
 \multicolumn{3}{|c|}{TOTAL} &
-   \\ \hline
+   \multicolumn{1}{c|}{12189.54} \\ \hline
 \end{tabularx}%
 \end{table}
 
