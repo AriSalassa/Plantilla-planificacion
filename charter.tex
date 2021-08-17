@@ -73,7 +73,9 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 1.1      & Correcciones de la versión 1.0                 					& 08/07/2021 \\ \hline
 2.0      & Se completa hasta la sección 9 inclusive					& 14/07/2021 \\ \hline
 2.1      & Correcciones de la versión 1.0 									& 22/07/2021 \\ \hline
-3.0      & Se completa hasta la sección 12 inclusive					& 29/07/2021 \\ \hline
+3.0      & Se completa hasta la sección 12 inclusive				& 29/07/2021 \\ \hline
+4.0		& Se completa hasta la sección 15 inclusive					& 05/08/2021 \\ \hline
+4.1		& Correcciones de la versión 4.0										& 10/08/2021 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & dd/mm/aaaa \\ \hline
@@ -95,7 +97,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y  consistirá esencialmente en un sistema que aporte información complementaria para el entrenamiento de futuros modelos de prevención de fraude de pagos electrónicos. El Trabajo Final tendrá un presupuesto preliminar estimado de 600 hs de trabajo y recursos económicos brindados por la empresa Mercado Libre, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y  consistirá esencialmente en un sistema que aporte información complementaria para el entrenamiento de futuros modelos de prevención de fraude de pagos electrónicos. El Trabajo Final tendrá un presupuesto preliminar estimado de 630 hs de trabajo y recursos económicos brindados por la empresa Mercado Libre, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -182,7 +184,7 @@ Colaboradores & Ing. Paz Martin \newline
 Orientador    & \supname	      & \pertesupname 	& Sr. ML Expert \newline Director Trabajo final \\ \hline
 Usuario final & Desarrolladores de Machine Learning & Mercado Libre   & Data Scientists \newline ML Engineers       	\\ \hline
 \end{tabularx}
-\caption{Identificación de los interesados}
+\caption{Identificación de los interesados.}
 \label{tab:interesados}
 \end{table}
 
@@ -234,7 +236,7 @@ Para el desarrollo del presente proyecto se supone que:
 	\item El responsable tendrá a su disposición a su director y/o colaboradores cuando sea pertinente.
 	\item TensorFlow es el framework de cálculo numérico que dispone de todas las herramientas necesarias para encarar este proyecto.
 	\item El autoencoder entrenado solamente con pagos fraudulentos tendrá buen ratio de reconstrucción de datos a la hora de evaluar pagos rechazados por alto riesgo.
-	\item La puntuación de Fraude (asociada con la medida de reconstrucción de un pago) será un dato de tipo flotante, o bien, un dato de tipo categórico basado en ciertos valores de corte (thresholds). 
+	\item La puntuación de fraude (asociada con la medida de reconstrucción de un pago) será un dato de tipo flotante, o bien, un dato de tipo categórico basado en ciertos valores de corte (thresholds). 
 	\item Es posible aplicar el método de descomposición T-SNE a los datos codificados y, a partir de su representación en dos o tres dimensiones, se podrán realizar nuevos análisis, por ejemplo, la identificación de clusters de fraudes.
 	\item Una vez que el autoencoder esté entrenado y validado con un set de pagos, su aplicación podrá generalizarse.
 	\item El comportamiento de los usuarios que provocan el fraude no mutará mientras tiene lugar el desarrollo de este proyecto.
@@ -277,8 +279,7 @@ Para el desarrollo del presente proyecto se supone que:
 		\end{enumerate}
 	\item Requerimientos de testing y evaluación
 		\begin{enumerate}
-			\item La efectividad de la puntuación de fraude debe ser evaluada contra una marca dada por una heurística conocida.
-			\item Dicha puntuación debe ser igual o mejor que dicha marca.
+			\item La efectividad de la puntuación de fraude debe ser evaluada contra una marca dada por una heurística conocida y la efectividad de la puntuación debe ser mejor que la efectividad de la marca.
 		\end{enumerate}
 \end{enumerate}
 
@@ -337,79 +338,89 @@ Los entregables del proyecto que conservará la empresa donde trabaja el respons
  \item Datasets utilizados.
  \item Queries de extracción documentadas.
  \item Jupyter labs de análisis documentados.
+ \item Informe de avance.
 \end{itemize}
 
-Además, se entregará a los docentes responsables de la Carrera de Especialización en Inteligencia Artificial de la UBA el informe final del proyecto con firma previa de los documentos de confidencialidad.
+Además, se entregará a los docentes responsables de la Carrera de Especialización en Inteligencia Artificial de la UBA informe de avance y el informe final del proyecto con firma previa de los documentos de confidencialidad.
 
 \section{9. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
 
 \begin{enumerate}
-\item Planificación (60 hs)
+\item Planificación. (60 hs)
 	\begin{enumerate}
-		\item Estudio de necesidades (9 hs)
-		\item Análisis de factibilidad (3 hs)
-		\item Definición de requerimientos (9 hs)
-		\item Confección de documento de planificación (39 hs)
+		\item Estudio de necesidades. (9 hs)
+		\item Análisis de factibilidad. (3 hs)
+		\item Definición de requerimientos. (9 hs)
+		\item Confección de documento de planificación. (39 hs)
 	\end{enumerate}
-\item Investigación y capacitación (114 hs)
+\item Investigación y capacitación. (114 hs)
 	\begin{enumerate}
-		\item Estudio de distintos tipos de autoencoders (9 hs)
-		\item Estudio de autoencoders aplicados a la prevención de fraude (3 hs)
-		\item Capacitación en Tensor Flow 2 (15 hs)
-		\item Capacitación en \emph{feature preprocessing} y \emph{feature engineering} (24 hs)
-		\item Capacitación en \emph{feature selection} (15 hs)
-		\item Capacitación en SQL aplicado a Amazon Redshift y Google BigQuery (9 hs)
-		\item Capacitación en \emph{Machine Learning pipelines} en GCP (15 hs)
-		\item Estudio de algoritmo T-SNE (9 hs)
-		\item Elaboración de códigos de ejemplos básicos (15 hs)
+		\item Estudio de distintos tipos de autoencoders. (9 hs)
+		\item Estudio de autoencoders aplicados a la prevención de fraude. (3 hs)
+		\item Capacitación en Tensor Flow 2. (15 hs)
+		\item Capacitación en \emph{feature preprocessing} y \emph{feature engineering}. (24 hs)
+		\item Capacitación en \emph{feature selection}. (15 hs)
+		\item Capacitación en SQL aplicado a Amazon Redshift y Google BigQuery. (9 hs)
+		\item Capacitación en \emph{Machine Learning pipelines} en GCP. (15 hs)
+		\item Estudio de algoritmo T-SNE. (9 hs)
+		\item Elaboración de códigos de ejemplos básicos. (15 hs)
 	\end{enumerate}
-\item Confección dataset de prueba (45 hs)
+\item Confección dataset de prueba. (45 hs)
 	\begin{enumerate}
-		\item Exploración y elección tablas (9 hs)
-		\item Análisis de completitud de datos (9 hs)
-		\item Confección de query de extracción (9 hs)
-		\item Extracción de datos (3 hs)
-		\item Selección de features (15 hs)
+		\item Exploración y elección tablas. (9 hs)
+		\item Análisis de completitud de datos. (9 hs)
+		\item Confección de query de extracción. (9 hs)
+		\item Extracción de datos. (3 hs)
+		\item Selección de features. (15 hs)
 	\end{enumerate}
-\item Entrenamiento (78 hs)
+\item Entrenamiento. (78 hs)
 	\begin{enumerate}
-		\item Aplicación de \emph{feature preprocessing} (15 hs)
-		\item Prueba de distintas arquitecturas de red con distintas configuraciones (39 hs)
-		\item Evaluación y ajuste del modelo (24 hs)
+		\item Aplicación de \emph{feature preprocessing}. (15 hs)
+		\item Prueba de distintas arquitecturas de red con distintas configuraciones. (39 hs)
+		\item Evaluación y ajuste del modelo. (24 hs)
 	\end{enumerate}
-\item Pruebas de validación (63 hs)
+\item Pruebas de validación. (63 hs)
 	\begin{enumerate}
-		\item Evaluación de distintas estrategias de \emph{labeling} (39 hs)
-		\item Comparación de resultados en función de heurísitcas conocidas (24 hs)
+		\item Evaluación de distintas estrategias de \emph{labeling}. (39 hs)
+		\item Comparación de resultados en función de heurísitcas conocidas. (24 hs)
 	\end{enumerate}
-\item Representación reducida (63 hs)
+\item Representación reducida. (63 hs)
 	\begin{enumerate}
- 		\item Visualización de datos de la capa de entrada utilizando el método de descomposición T-SNE (15 hs)
- 		\item Visualización de datos de la capa latente utilizando el método de descomposición T-SNE (15 hs)
- 		\item Visualización segmentada de los datos en función de features de interés del modelo (33 hs)
+ 		\item Visualización de datos de la capa de entrada utilizando el método de descomposición T-SNE. (15 hs)
+ 		\item Visualización de datos de la capa latente utilizando el método de descomposición T-SNE. (15 hs)
+ 		\item Visualización segmentada de los datos en función de features de interés del modelo. (33 hs)
  	\end{enumerate}
-\item Generalización (87 hs)
+\item Generalización. (87 hs)
  	\begin{enumerate}
- 		\item Extracción de datos correspondientes a otro flujo de datos (24 hs)
- 		\item Análisis de completitud de datos (15 hs)
- 		\item Comparación y análisis de resultados (24 hs)
- 		\item Ajustes finales (24 hs)
+ 		\item Extracción de datos correspondientes a otro flujo de datos. (24 hs)
+ 		\item Análisis de completitud de datos. (15 hs)
+ 		\item Comparación y análisis de resultados. (24 hs)
+ 		\item Ajustes finales. (24 hs)
  	\end{enumerate}
-\item Documentación y presentación final (90 hs)
+\item Documentación y presentación final. (90 hs)
  	\begin{enumerate}
- 		\item Elaborar informe final del proyecto (50 hs)
- 		\item Preparación de presentación final (30 hs)
+ 		\item Elaborar informe de avance proyecto. (40 hs)
+ 		\item Elaborar informe final del proyecto. (40 hs)
+ 		\item Preparación de presentación final. (30 hs)
  	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (600 hs)
+Cantidad total de horas: (630 hs)
 
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
 
-En la Figura \ref{fig:aon} se muestra el diagrama de \emph{Activity on Node} del proyecto. Las flechas resaltadas en negro ilustran el camino crítico del proyecto. También se puede ver que los hitos marcan el fin de las distintas fases del proyecto, las cuales, a su vez, están representadas en distintos colores.
+En la Figura \ref{fig:aon} se muestra el diagrama de \emph{Activity on Node} del proyecto. Las flechas resaltadas en negro ilustran el camino crítico del proyecto. También se puede ver que los hitos marcan el fin de las distintas fases del proyecto, las cuales, a su vez, están representadas en distintos colores. 
+
+La primera fase está comprendida por tareas previas al desarrollo en código del proyecto. En esta fase se considera planificación y capacitación.
+
+La segunda fase involucra todo el \emph{machine learning pipeline} necesario para evaluar entrenar un modelo y dejarlo preparado para en un futuro servirlo en producción.
+
+La tercera fase toma como punto de partida un modelo de calidad ya entrenado e intenta agregarle valor al mismo mediante la generalización de resultados y la representación reducida de los pagos para intentar obtener otras posibles conclusiones adicionales relacionadas con potenciales perfiles de fraude.
+
+Finalmente, la última fase, involucra toda la realización de toda la documentación del trabajo realizado.
 
 \begin{figure}[htpb]
 \centering 
@@ -441,7 +452,7 @@ En la figura \ref{fig:ganttReducido} y \ref{fig:ganttCompleto} se muestra el dia
 \section{12. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
 
-En esta sección se detallas los gastos del proyecto. Las unidades del valor unitario están dadas en dólares estadounidenses.
+En esta sección se detallan los gastos del proyecto. Las unidades del valor unitario están dadas en dólares estadounidenses.
 
 Las cantidades del uso de los servicios son estimadas. En el caso de Amazon Redshift y Google BigQuery se ha considerado el gasto mensual fijo del uso del servicio que paga la empresa. En el caso de Amazon Redshift se ha estimado que se almacenará 1 Terabyte de información durante 10 meses. Finalmente, para el caso de entrenamientos, se ha considerado que los entrenamientos de los experimentos durarán 50 horas y tendrán lugar durante un mes.
 
@@ -459,7 +470,7 @@ Descripción &
  	Mano de obra & 
   	\multicolumn{1}{c|}{600 horas} &
   	\multicolumn{1}{c|}{10 USD/hora} &
-  	\multicolumn{1}{c|}{6000} \\ \hline
+  	\multicolumn{1}{c|}{6300} \\ \hline
  	Google BigQuery &
   	\multicolumn{1}{c|}{1 mes} &
   	\multicolumn{1}{c|}{1700 USD/mes} &
@@ -477,7 +488,7 @@ Descripción &
   	\multicolumn{1}{c|}{61.05 USD/mes} &
   	\multicolumn{1}{c|}{61.05} \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{9376.57} \\ \hline
+  \multicolumn{1}{c|}{9676.57} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
@@ -490,10 +501,10 @@ Descripción &
   	\multicolumn{1}{c|}{-} &
   	\multicolumn{1}{c|}{2812.97} \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{2812.97} \\ \hline
+  \multicolumn{1}{c|}{2902.97} \\ \hline
 \rowcolor[HTML]{C0C0C0}
 \multicolumn{3}{|c|}{TOTAL} &
-   \multicolumn{1}{c|}{12189.54} \\ \hline
+   \multicolumn{1}{c|}{12579.54} \\ \hline
 \end{tabularx}%
 \end{table}
 
@@ -501,29 +512,43 @@ Descripción &
 \section{13. Gestión de riesgos}
 \label{sec:riesgos}
 
-\begin{consigna}{red}
-a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
- 
-Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos de forma negativa)
+a) Identificación de los riesgos del proyecto:
+
+Riesgo 1: falta de disponibilidad de los colaboradores.
 \begin{itemize}
-	\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de severidad (S).
-	\item Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de (O). 
+	\item Severidad (3): ante la ausencia de alguno de los colaboradores, se hará más largo el desarrollo en los cuellos de botella del proyecto.
+	\item Probabilidad de ocurrencia (7): hay mucha rotación de empleados en la empresa y colaborador podría dejarla durante el transcurso del proyecto. 
+\end{itemize}
+
+Riesgo 2: falta de tiempo del responsable.
+\begin{itemize}
+	\item Severidad (5): se atrasarían las tareas, no se cumpliría con la planificación y, en el peor de los casos, no se lograría completar el proyecto para la fecha de presentación establecida.
+	\item Probabilidad de ocurrencia (4): en la empresa donde trabaja el responsable surgen contingencias que son prioritarias. 
 \end{itemize}   
 
-Riesgo 2:
+Riesgo 3: no llegar a un 85\% de precisión en el entrenamiento. 
 \begin{itemize}
-	\item Severidad (S): 
-	\item Ocurrencia (O):
+	\item Severidad (8): no se contaría con una red entrenada de calidad y los resultados de la misma no serían tan fiables.
+	\item Probabilidad de ocurrencia (3): puede ocurrir que los datos seleccionados para el entrenamiento no sean lo suficientemente representativos. 
 \end{itemize}
 
-Riesgo 3:
+Riesgo 4: comportamiento inesperado del modelo a la hora de predecir. 
 \begin{itemize}
-	\item Severidad (S): 
-	\item Ocurrencia (O):
+	\item Severidad (9): si el modelo tiene un buen ratio de reconstrucción para pagos fraudulentos y resulta que también tiene un buen ratio de reconstrucción para los pagos no fraudulentos no se cumpliría la hipótesis planteada en este trabajo.
+	\item Probabilidad de ocurrencia (3): es posible que la red no aprenda los patrones que permitan distinguir un pago fraudulento de un pago no fraudulento.
 \end{itemize}
 
+Riesgo 5: efectividad de puntuación de fraude menor a marca de heurística.
+\begin{itemize}
+	\item Severidad (9): si esto sucede no se cumpliría con la motivación del trabajo.
+	\item Probabilidad de ocurrencia (4): puede que la red neuronal no aprenda patrones que permitan separar pagos fraudulentos de no fraudulentos y, por ello, la puntuación de fraude puede no ser eficiente. También puede ocurrir que el modelo se comporte de la manera esperada pero que aún así no llegue a superar la eficiencia de la marca heurística. 
+\end{itemize}
+
+Riesgo 6: no llegar a distinguir patrones en la representación reducida.
+\begin{itemize}
+	\item Severidad (3): no es tan grave que no se puedan distinguir patrones de fraude dentro del set de datos. No es la motivación principal de este proyecto.
+	\item Probabilidad de ocurrencia (5): es una hipótesis donde se tiene gran incertidumbre.
+\end{itemize}
 
 b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 
@@ -533,70 +558,177 @@ b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-\end{tabularx}%
+		Falta de disponibilidad de los colaboradores & 3  & 7  & 21 & - & - &  21 \\ \hline
+       Falta de tiempo del responsable & 5  & 4  & 20 & - & - & 20 \\ \hline
+       No llegar a un 85\% de precisión en el entrenamiento & 8  & 3  & 24 & 6 & 2 & 12     \\ \hline
+       Comportamiento inesperado del modelo a la hora de predecir & 9  & 3  & 27 &  8  &  2  &  16    \\ \hline
+       Efectividad de puntuación de fraude menor a marca de heurística & 9 & 4 & 36 & 8 & 2 & 16     \\ \hline
+      No llegar a distinguir patrones en la representación reducida & 3 &  5 & 15 & -  & -   & 15  \\ \hline
+\end{tabularx}
 \end{table}
 
-Criterio adoptado: 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a...
+Criterio adoptado: se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 21.
 
 Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
 
+
 c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
  
-Riesgo 1: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-  Nueva asignación de S y O, con su respectiva justificación:
-  - Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de severidad (S).
-  - Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de (O).
+Riesgo 3: no llegar a un 85\% de precisión en el entrenamiento.
+\begin{itemize}
+	\item Plan de mitigación: en primer lugar se atacará la red. Se seguirán probando distintas arquitecturas y distintos hiperparámetros. Si eso no da resultado se buscarán más datos y se hará una nueva extracción con más registros y más \emph{features}.
+	\item Severidad (6): cada uno de los planes de mitigación conlleva un tiempo adicional no menor por lo que la planificación del proyecto podría verse atrasada.
+	\item Probabilidad de ocurrencia (2): haciendo todos los ajustes posibles debería alcanzarse la precisión deseada.
+\end{itemize}
 
-Riesgo 2: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
- 
-Riesgo 3: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
+Riesgo 4: comportamiento inesperado del modelo a la hora de predecir. 
+\begin{itemize}
+	\item Plan de mitigación: se invertirá el paradigma del trabajo. El objetivo se planteó de manera tal de entrenar un autoencoder con pagos fraudulentos para estimar, dentro de los pagos rechazados, cuántos estuvieron bien rechazados. La mitigación consistirá en entrenar el autoencoder con pagos no fraudulentos para medir, dentro de los rechazados, cuántos estuvieron mal rechazados. Esto puede hacerse porque la cantidad de pagos no fraudulentos es mucho mayor que la cantidad de pagos fraudulentos y, además, la dinámica del comportamiento del usuario no fraudulento es mucho menor que la dinámica de comportamiento del usuario no fraudulento.
+	\item Severidad (8): tomar el enfoque del plan de mitigación seguramente daría buenos resultados pero se perdería mucho tiempo en nuevas extracciones y pre procesamiento de datos. Además la representación reducida de dichos pagos no tendría mucho valor.
+	\item Probabilidad de ocurrencia (2): es muy improbable que con la gran cantidad de datos disponibles no se pueda ajustar la red para que pueda predecir correctamente.
+\end{itemize}
 
-\end{consigna}
+Riesgo 5: efectividad de puntuación de fraude menor a marca de heurística.
+\begin{itemize}
+	\item Plan de mitigación: se convocará al director o a alguno de los colaboradores para que participen activamente en la mejora.
+	\item Severidad (8): poner mucho recurso humano a mitigar el problema seguramente impactará en grandes retrasos en la planificación.
+	\item Probabilidad de ocurrencia (2): sería raro que surgiese este problema sin que se hubiese advertido y eventualmente, mitigado, en pasos anteriores.
+\end{itemize}
+
+
 
 
 \section{14. Gestión de la calidad}
 \label{sec:calidad}
 
-\begin{consigna}{red}
-Para cada uno de los requerimientos del proyecto indique:
 \begin{itemize} 
-\item Req \#1: copiar acá el requerimiento.
 
+\item Req 1.1: toda documentación compartida debe mantenerse dentro de un acuerdo de confidencialidad.
 \begin{itemize}
-	\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente. Detallar 
-	\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido. Detallar  
+	\item Verificación: se firmará acuerdo de confidencialidad entre las partes. 
+	\item Validación: revisión y conformidad por parte del director.
+\end{itemize}
+
+\item Req 1.2: el trabajo debe ser continuamente documentado y se presentarán informes de avance una vez cada tres semanas al director.
+\begin{itemize}
+	\item Verificación: se controlará que cada avance tenga la documentación necesaria de manera que alguno de los colaboradores pueda entender el avance sin entrar en detalles de implementación. 
+	\item Validación: revisión y conformidad por parte del director.
+\end{itemize}
+
+\item Req 1.3: los informes de avance pueden ser presentados como código correctamente documentado con los resultados correspondientes.
+\begin{itemize}
+	\item Verificación: se controlará que cada avance tenga la documentación necesaria de manera que alguno de los colaboradores pueda entender el avance sin entrar en detalles de implementación. 
+	\item Validación: revisión y conformidad por parte del director.
+\end{itemize}
+
+\item Req 2.1: se utilizará una metodología de trabajo  ágil e iterativa con mucha interacción entre el responsable, el director y los colaboradores.
+\begin{itemize}
+	\item Verificación: se realizarán todas las ceremonias que correspondan y se comentarán los problemas y/o avances en las \emph{dailys} que correspondan.
+	\item Validación: N/A (requerimiento interno).
+\end{itemize}
+
+\item Req 3.1: los datos deberán ser consultados a base de datos relacionales. El lenguaje para estas transacciones debe ser SQL y debe ser lo más agnóstico posible (intentar no usar funciones que sean específicas de uno y otro proveedor).
+\begin{itemize}
+	\item Verificación: se probarán las queries en distintos proveedores para asegurarse de que corra en todos.
+	\item Validación: N/A (requerimiento interno).
+\end{itemize}
+
+\item Req 3.2: el framework utilizado debe ser Tensor Flow en su versión V2.0 o superior en Python.
+\begin{itemize}
+	\item Verificación: al comienzo de cada sesión de trabajo se utilizará el comando \emph{pip show tesorflow} para verificar la versión utilizada.
+	\item Validación: N/A (requerimiento interno).
+\end{itemize}
+
+\item Req 3.3: todo análisis debe realizarse en código Python dentro de Jupyter labs y utilizando librerías standard (numpy, pandas, matplotlib, seaborn, etcétera).
+\begin{itemize}
+	\item Verificación: todo el código escrito se volcará en una máquina virtual provista de un Jupyter Lab con todas las librerías standard pre instaladas. 
+	\item Validación: N/A (requerimiento interno).
+\end{itemize}
+
+\item Req 4.1: las queries de extracción de datos deben ser compatibles con Amazon Redshift y/o Google BigQuery.
+\begin{itemize}
+	\item Verificación: se probarán las queries en uno y otro proveedor con registros limitados. 
+	\item Validación: N/A (requerimiento interno).
+\end{itemize}
+
+\item Req 4.2: los datasets deben ser guardados en Amazon S3 o Google Cloud Storage como archivos con extensión .csv.
+\begin{itemize}
+	\item Verificación: se podrán consultar cada uno de los archivos en el bucket que corresponda.
+	\item Validación: N/A (requerimiento interno).
+\end{itemize}
+
+\item Req 4.3: en caso de ser necesario un hardware específico de entrenamiento, deberán usarse los servicios de Google Cloud Platform (GCP).
+\begin{itemize}
+	\item Verificación: se harán ensayos de entrenamiento en una máquina local y en máquinas remotas que a lo sumo estarán provistas de GPU. En caso de no cumplir con los requerimientos de entrenamiento, se solicitará usar una máquina virtual provista de TPU.
+	\item Validación: revisión y conformidad por parte del director.
+\end{itemize}
+
+\item Req 5.1: la extracción de datos no puede demorar más de 24 hs.
+\begin{itemize}
+	\item Verificación: se harán extracciones de prueba con datos reducidos. En función de los resultados se hará una estimación de cuánto puede llegar a demorar una extracción de calidad para cumplir con el requerimiento.
+	\item Validación: la extracción se configurará para parar por \emph{timeout} a las 24 hs.
+\end{itemize}
+
+\item Req 5.2: el modelo entrenado debe tener una precisión de al menos 85\%.
+\begin{itemize}
+	\item Verificación: se tendrán los resultados en entrenamiento en las tablas de métricas de Tensor Flow para consultar y verificar.
+	\item Validación: cuando el sistema se ponga en producción se monitoreará para validar la métrica antes mencionada.
+\end{itemize}
+
+\item Req 5.3: el modelo debe ser entrenado con al menos diez mil registros.
+\begin{itemize}
+	\item Verificación: se tendrá un contador de registros presentes en la extracción resultante.
+	\item Validación: N/A (requerimiento interno).
+\end{itemize}
+
+\item Req 5.4: el entrenamiento del modelo no puede demorar más de 24 hs.
+\begin{itemize}
+	\item Verificación: se harán entrenamientos de prueba con modelos sencillos para ver cuánto dura un entrenamiento de este estilo. En función de los resultados se hará una estimación de cuánto puede llegar a complejizarse el modelo para cumplir con el requerimiento.
+	\item Validación: el entrenamiento se configurará para parar por \emph{timeout} a las 24 hs.
+\end{itemize}
+
+\item Req 5.5: el tipo de dato que represente la puntuación de fraude debe ser categórico o flotante.
+\begin{itemize}
+	\item Verificación: se realizarán distintas pruebas analizando la dispersión de los resultados obtenidos para saber si es posible simplificar el grado de reconstrucción a una variable categórica binaria.
+	\item Validación: revisión y conformidad por parte del director.
+\end{itemize}
+
+\item Req 5.6: las representaciones resultantes de la descomposición deben poder visualizarse en dos o tres dimensiones.
+\begin{itemize}
+	\item Verificación: una vez que el modelo del autoencoder esté entrenado el modelo de la red se seccionará de forma tal de tener como capa de salida la capa latente. Cada uno de los pagos que forman parte de los set de entrenamiento, validación y test pasarán por esta red de codificación. Una vez que se tienen los datos codificados o latentes, se le aplicará el algoritmo T-SNE y los resultados se graficarán usando matplotlib. 
+	\item Validación: N/A (requerimiento interno).
+\end{itemize}
+
+\item Req 6.1: la efectividad de la puntuación de fraude debe ser evaluada contra una marca dada por una heurística conocida y la efectividad de la puntuación debe ser mejor que la efectividad de la marca.
+\begin{itemize}
+	\item Verificación: se tomará el set de validación, se le asignará cada una de las puntuaciones y se verificará la eficiencia de una y otra métrica.
+	\item Validación: cuando el sistema se ponga en producción se monitoreará una y otra marca para corroborar las pruebas de verificación.
 \end{itemize}
 
 \end{itemize}
-
-Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, mediciones, etc.  Las acciones de verificación suelen considerar al entregable como ``caja blanca'', es decir se conoce en profundidad su funcionamiento interno.  En cambio, las acciones de validación suelen considerar al entregable como ``caja negra'', es decir, que no se conocen los detalles de su funcionamiento interno.
-
-\end{consigna}
 
 \section{15. Procesos de cierre}    
 \label{sec:cierre}
 
-\begin{consigna}{red}
-Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
+Una vez finalizado el proyecto, se procederá a su cierre para lo cual se contemplarán las siguientes actividades, cada una de ellas a cargo del responsable Ariel Salassa:
 
 \begin{itemize}
-	\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
-	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento a aplicar. 
-	\item Identificación de las técnicas y procedimientos útiles e inútiles que se emplearon, y los problemas que surgieron y cómo se solucionaron:
-	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento para dejar registro.
-	\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
-	  - Indicar esto y quién financiará los gastos correspondientes.
+	\item Análisis del cumplimiento del Plan de Proyecto original:
+		\begin{itemize}
+			\item Se compararán las horas dedicadas a cada tarea con las horas planificadas en el inicio.
+			\item Se analizará el porcentaje de requerimientos cumplidos.
+			\item Se evaluará el desempeño de la solución y la satisfacción del equipo de trabajo. 
+		\end{itemize}
+	\item Identificación de las técnicas y procedimientos útiles e inútiles que se utilizaron, así como los problemas que surgieron y cómo se solucionaron.
+		\begin{itemize}
+			\item Se dejará asentado en los informes al director qué fue lo qué se probó, resaltando lo que dio resultado y lo que no, los inconvenientes que surgieron y cómo se solucionaron. 
+			\item Se dejarán escritas las posibles oportunidades de mejora que presente la solución.
+		\end{itemize}
+	\item Presentación oral virtual del proyecto y acto de agradecimiento a todos los interesados.
+	\begin{itemize}
+			\item Se organizará una sesión virtual donde se presentará el proyecto, su utilidad y su estado al concluir la especialización.
+		\end{itemize}
 \end{itemize}
-
-\end{consigna}
 
 
 \end{document}
