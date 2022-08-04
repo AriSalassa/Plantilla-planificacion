@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Stereo Vision" company="Globant SA" webLink="http://" view-date="2022-05-01" view-index="0" gantt-divider-location="481" resource-divider-location="300" version="3.2.3241" locale="en_US">
+    <description/>
+    <view zooming-state="default:8" id="gantt-chart">
+        <field id="tpd3" name="Name" width="426" order="0"/>
+        <field id="tpd4" name="Begin date" width="20" order="1"/>
+        <field id="tpd5" name="End date" width="20" order="2"/>
+        <option id="filter.completedTasks" value="false"/>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="2" name="Planificación" meeting="false" start="2022-05-02" duration="20" complete="0" expand="true">
+            <task id="3" name="Estudio de necesidades" color="#8cb6ce" meeting="false" start="2022-05-02" duration="3" complete="0" thirdDate="2022-05-26" thirdDate-constraint="0" expand="true">
+                <depend id="4" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="4" name="Análisis de factibilidad" color="#8cb6ce" meeting="false" start="2022-05-05" duration="1" complete="0" thirdDate="2022-05-26" thirdDate-constraint="0" expand="true">
+                <depend id="5" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="5" name="Definición de requerimientos" color="#8cb6ce" meeting="false" start="2022-05-06" duration="3" complete="0" thirdDate="2022-05-26" thirdDate-constraint="0" expand="true">
+                <depend id="6" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="6" name="Confección de documento de planificación" color="#8cb6ce" meeting="false" start="2022-05-11" duration="13" complete="0" thirdDate="2022-05-26" thirdDate-constraint="0" expand="true">
+                <depend id="8" type="2" difference="0" hardness="Strong"/>
+            </task>
+        </task>
+        <task id="7" name="Investigación y Capacitación" color="#8cb6ce" meeting="false" start="2022-05-30" duration="37" complete="0" thirdDate="2022-05-16" thirdDate-constraint="0" expand="true">
+            <task id="8" name="Conceptos básicos de visión esteroscópica y sus aplicaciones" color="#8cb6ce" meeting="false" start="2022-05-30" duration="3" complete="0" thirdDate="2022-05-09" thirdDate-constraint="0" expand="false">
+                <depend id="9" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="9" name="Geometría de la formación de imágenes" color="#8cb6ce" meeting="false" start="2022-06-02" duration="2" complete="0" thirdDate="2022-05-09" thirdDate-constraint="0" expand="true">
+                <depend id="10" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="10" name="Geometría epipolar" color="#8cb6ce" meeting="false" start="2022-06-06" duration="1" complete="0" thirdDate="2022-05-09" thirdDate-constraint="0" expand="true">
+                <depend id="11" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="11" name="Distorsión de lentes" color="#8cb6ce" meeting="false" start="2022-06-07" duration="2" complete="0" thirdDate="2022-05-17" thirdDate-constraint="0" expand="true">
+                <depend id="12" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="12" name="Calibración de cámaras" color="#8cb6ce" meeting="false" start="2022-06-09" duration="2" complete="0" thirdDate="2022-05-17" thirdDate-constraint="0" expand="true">
+                <depend id="13" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="13" name="Capacitación en OpenCV" color="#8cb6ce" meeting="false" start="2022-06-13" duration="7" complete="0" thirdDate="2022-05-17" thirdDate-constraint="0" expand="true">
+                <depend id="15" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="15" name="Código de ejemplo de visión estereoscópica" color="#8cb6ce" meeting="false" start="2022-06-22" duration="10" complete="0" thirdDate="2022-05-17" thirdDate-constraint="0" expand="false">
+                <depend id="14" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="14" name="Protocolos de streaming en tiempo real" color="#8cb6ce" meeting="false" start="2022-07-06" duration="5" complete="0" thirdDate="2022-05-17" thirdDate-constraint="0" expand="true">
+                <depend id="16" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="16" name="Código de ejemplo de uso de protocolos en tiempo real" color="#8cb6ce" meeting="false" start="2022-07-13" duration="5" complete="0" thirdDate="2022-05-17" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="17" name="Setup de cámaras" meeting="false" start="2022-07-20" duration="15" complete="0" expand="true">
+            <task id="18" name="Conexión de cámaras y acceso al stream de video" color="#8cb6ce" meeting="false" start="2022-07-20" duration="5" complete="0" thirdDate="2022-05-23" thirdDate-constraint="0" expand="true">
+                <depend id="19" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="19" name="Calibración de cámaras individuales" color="#8cb6ce" meeting="false" start="2022-07-27" duration="5" complete="0" thirdDate="2022-05-23" thirdDate-constraint="0" expand="true">
+                <depend id="20" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="20" name="Montaje de cámaras y calibración conjunta" color="#8cb6ce" meeting="false" start="2022-08-03" duration="5" complete="0" thirdDate="2022-05-23" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="21" name="Evaluación estéreo" meeting="false" start="2022-08-10" duration="30" complete="0" expand="true">
+            <task id="22" name="Detección de objectos de cada imagen" color="#8cb6ce" meeting="false" start="2022-08-10" duration="5" complete="0" thirdDate="2022-05-23" thirdDate-constraint="0" expand="true">
+                <depend id="23" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="23" name="Implementación de template matching" color="#8cb6ce" meeting="false" start="2022-08-17" duration="5" complete="0" thirdDate="2022-05-23" thirdDate-constraint="0" expand="true">
+                <depend id="24" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="24" name="Implementación de geometría epipolar." color="#8cb6ce" meeting="false" start="2022-08-24" duration="5" complete="0" thirdDate="2022-05-23" thirdDate-constraint="0" expand="true">
+                <depend id="25" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="25" name="Implementación de disparidad estéreo" color="#8cb6ce" meeting="false" start="2022-08-31" duration="5" complete="0" thirdDate="2022-05-23" thirdDate-constraint="0" expand="true">
+                <depend id="26" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="26" name="Cálculo de distacias y profundidades" color="#8cb6ce" meeting="false" start="2022-09-07" duration="5" complete="0" thirdDate="2022-05-23" thirdDate-constraint="0" expand="true">
+                <depend id="27" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="27" name="Prototipado y preparación de resultados" color="#8cb6ce" meeting="false" start="2022-09-14" duration="5" complete="0" thirdDate="2022-05-23" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="29" name="Pruebas de validación" color="#8cb6ce" meeting="false" start="2022-09-21" duration="21" complete="0" thirdDate="2022-07-25" thirdDate-constraint="0" expand="true">
+            <task id="30" name="Pruebas locales en tiempo real" color="#8cb6ce" meeting="false" start="2022-09-21" duration="7" complete="0" thirdDate="2022-07-25" thirdDate-constraint="0" expand="true">
+                <depend id="31" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="31" name="Pruebas remotas en tiempo real" color="#8cb6ce" meeting="false" start="2022-09-30" duration="7" complete="0" thirdDate="2022-07-25" thirdDate-constraint="0" expand="true">
+                <depend id="32" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="32" name="Ajustes finales" color="#8cb6ce" meeting="false" start="2022-10-11" duration="7" complete="0" thirdDate="2022-07-25" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="33" name="Documentación y presentación final" meeting="false" start="2022-10-20" duration="50" complete="0" expand="true">
+            <task id="34" name="Elaborar informe de avance proyecto" color="#8cb6ce" meeting="false" start="2022-10-20" duration="13" complete="0" thirdDate="2022-07-25" thirdDate-constraint="0" expand="true">
+                <depend id="35" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="35" name="Elaborar informe final del proyecto" color="#8cb6ce" meeting="false" start="2022-11-08" duration="30" complete="0" thirdDate="2022-07-25" thirdDate-constraint="0" expand="true">
+                <depend id="36" type="2" difference="0" hardness="Strong"/>
+                <task id="37" name="Redacción y correción cap. I" color="#8cb6ce" meeting="false" start="2022-11-08" duration="6" complete="0" thirdDate="2022-11-08" thirdDate-constraint="0" expand="true">
+                    <depend id="42" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="42" name="Redacción y correción cap. II" color="#8cb6ce" meeting="false" start="2022-11-16" duration="6" complete="0" thirdDate="2022-11-08" thirdDate-constraint="0" expand="true">
+                    <depend id="41" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="41" name="Redacción y correción cap. III" color="#8cb6ce" meeting="false" start="2022-11-24" duration="6" complete="0" thirdDate="2022-11-08" thirdDate-constraint="0" expand="true">
+                    <depend id="40" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="40" name="Redacción y correción cap. IV" color="#8cb6ce" meeting="false" start="2022-12-02" duration="6" complete="0" thirdDate="2022-11-08" thirdDate-constraint="0" expand="true">
+                    <depend id="39" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="39" name="Redacción y correción cap. V" color="#8cb6ce" meeting="false" start="2022-12-12" duration="6" complete="0" thirdDate="2022-11-08" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="36" name="Preparación presentación final" color="#8cb6ce" meeting="false" start="2022-12-20" duration="7" complete="0" thirdDate="2022-07-25" thirdDate-constraint="0" expand="true"/>
+        </task>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles roleset-name="SoftwareDevelopment"/>
+</project>
